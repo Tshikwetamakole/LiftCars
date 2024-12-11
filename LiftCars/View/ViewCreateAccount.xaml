@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LiftCars.View.ViewCreateAccount"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             Title="ViewCreateAccount" NavigationPage.HasNavigationBar="False">
+
+
+    <Grid RowDefinitions=".30*,.70*">
+        <Image Aspect="AspectFill" Source="wallp.png"/>
+        <Grid BackgroundColor="#4F3F9B" Opacity=".6"/>
+        <Grid ColumnDefinitions="*,*">
+            <Image Aspect="AspectFill"
+           HeightRequest="120"
+           Source="dotnet_bot.png">
+            </Image>
+            <skia:SKLottieView Grid.Column="1"
+                       RepeatCount="-1"
+                       RepeatMode="Reverse"
+                       Source="lock.json"
+                       HeightRequest="150"
+                       WidthRequest="150" />
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <RoundRectangle Margin="-5,-30,-5,-2"
+                    CornerRadius="30,30,0,0"
+                    Fill="LightSeaGreen"/>
+            <VerticalStackLayout Margin="30,0,30,0">
+                <Label FontAttributes="Bold"
+               FontSize="Medium"
+               HorizontalTextAlignment="Center"
+               Text="Create your account!"
+               TextColor="White"/>
+
+                <StackLayout Margin="0,40,0,0" Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" BorderColor="#4F3F9B" BackgroundColor="AliceBlue" CornerRadius="28" HeightRequest="56" WidthRequest="56">
+                        <Image Source="username.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Padding="0" HeightRequest="45" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="15" HorizontalOptions="FillAndExpand" Margin="-20,0,0,0">
+                        <Entry Margin="20,0,0,0"  VerticalOptions="Center" TextColor="#4F3F9B" Placeholder="Enter Name" x:Name="EnterUserName" Text="{Binding Name}"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame Margin="0,20,0,0" ZIndex="1" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="28" HeightRequest="56" WidthRequest="56">
+                        <Image Source="email.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Padding="0" HeightRequest="45" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="15" HorizontalOptions="FillAndExpand" Margin="-20,20,0,0">
+                        <Entry Margin="20,0,0,0" x:Name="EmailEntry" TextColor="#4F3F9B" VerticalOptions="Center" Placeholder="Enter email" Text="{Binding Email}"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame Margin="0,20,0,0" ZIndex="1" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="28" HeightRequest="56" WidthRequest="56">
+                        <Image Source="password.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Padding="0" HeightRequest="45" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="15" HorizontalOptions="FillAndExpand" Margin="-20,20,0,0">
+                        <Entry Margin="20,0,0,0" IsPassword="{Binding IsPasswordHidden}" TextColor="#4F3F9B" x:Name="PasswordEntry" VerticalOptions="Center" Placeholder="Enter Password" Text="{Binding Password}" />
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame Margin="0,20,0,0" ZIndex="1" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="28" HeightRequest="56" WidthRequest="56">
+                        <Image Source="password.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Padding="0" HeightRequest="45" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="15" HorizontalOptions="FillAndExpand" Margin="-20,20,0,0">
+                        <Entry Margin="20,0,0,0" IsPassword="{Binding IsPasswordHidden}" TextColor="#4F3F9B" VerticalOptions="Center" x:Name="PasswordEntrys" Placeholder="Confirm Password" Text="{Binding ConfirmPassword}"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Margin="30,0,0,0" Orientation="Horizontal">
+                    <CheckBox Color="White" IsChecked="{Binding ShowPassword}" />
+                    <Label Text="Show password" TextColor="White" FontAttributes="Bold" Margin="-10,13,0,0"/>
+                </StackLayout>
+
+                <!-- Role selection for registration -->
+                <Picker Title="Select Role" 
+                ItemsSource="{Binding RoleOptions}" 
+                SelectedItem="{Binding RoleCode}" />
+
+                <Button x:Name="CreateAccountButton" Margin="20" Text="Create your account" WidthRequest="180" CornerRadius="20" HorizontalOptions="Center" Background="#4F3F9B" Command="{Binding SaveCommand}"/>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Already have an account?" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black" Margin="0,0,0,0" />
+                    <Button Text="Sign in here" BackgroundColor="Transparent" x:Name="SignINPage"  FontAttributes="Bold" TextColor="Red" Command="{Binding SignInHere}"/>
+                </StackLayout>
+
+
+            </VerticalStackLayout>
+
+
+        </Grid>
+
+
+
+    </Grid>
+    
+</ContentPage>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LiftCars.View.ViewUserInterface"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             Title="ViewUserInterface" NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions=".35*,.65*">
+        <Image Aspect="AspectFill" Source="wallp.png"/>
+        <Grid BackgroundColor="#4F3F9B" Opacity=".6"/>
+        <Grid ColumnDefinitions="*,*">
+            <Image Aspect="AspectFill"
+               HeightRequest="120"
+               Source="dotnet_bot.png">
+            </Image>
+
+            <skia:SKLottieView Grid.Column="1"
+                   RepeatCount="-1"
+                   RepeatMode="Reverse"
+                   Source="lock.json"
+                   HeightRequest="150"
+                   WidthRequest="150" />
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <RoundRectangle Margin="-5,-30,-5,-2"
+                        CornerRadius="30,30,0,0"
+                        Fill="LightSeaGreen"/>
+            <VerticalStackLayout Margin="30,0,30,0">
+                <Label FontAttributes="Bold"
+                   FontSize="Medium"
+                   HorizontalTextAlignment="Center"
+                   Text="Welcome to the login page"
+                   TextColor="White"/>
+
+                <Label FontSize="Medium"
+                   Margin="20"
+                   Text="Log in to continue"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"/>
+
+
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame ZIndex="1" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="28" HeightRequest="56" BackgroundColor="AliceBlue" WidthRequest="56">
+                        <Image Source="email.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center" />
+                    </Frame>
+
+                    <Frame Padding="0" HeightRequest="45" HasShadow="True" BackgroundColor="AliceBlue" BorderColor="#4F3F9B" CornerRadius="15" HorizontalOptions="FillAndExpand" Margin="-20,0,0,0">
+                        <Entry Margin="20,0,0,0" x:Name="EnterEmail" FontSize="Medium" TextColor="#4F3F9B" VerticalOptions="Center" Placeholder="Enter Email" Text="{Binding Email}"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame Margin="0,20,0,0" ZIndex="1" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="28" HeightRequest="56" WidthRequest="56">
+                        <Image Source="password.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Padding="0" HeightRequest="45" BackgroundColor="AliceBlue" HasShadow="True" BorderColor="#4F3F9B" CornerRadius="15" HorizontalOptions="FillAndExpand" Margin="-20,20,0,0">
+                        <Entry Margin="20,0,0,0" FontSize="Medium" IsPassword="{Binding IsPasswordHidden}" TextColor="#4F3F9B" x:Name="PasswordEntry" VerticalOptions="Center" Placeholder="Enter Password" Text="{Binding Password}"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Margin="30,0,0,0" Orientation="Horizontal">
+                    <CheckBox Color="White" IsChecked="{Binding ShowPassword}"/>
+                    <Label Text="Show password" TextColor="#4F3F9B" FontAttributes="Bold" Margin="-10,13,0,0"/>
+                    <Button Text="Forgot Password" BackgroundColor="Transparent" TextColor="red" FontAttributes="Bold" BorderWidth="0" Margin="40,0,0,0" Command="{Binding UpdatePassword}"/>
+                </StackLayout>
+
+                <Button Margin="20" Text="Sign in" WidthRequest="150" CornerRadius="20" HorizontalOptions="Center" Background="#4F3F9B" Command="{Binding SignInCommand}"/>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Don't have account?" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" TextColor="Black" Margin="0,0,0,0"/>
+                    <Button Text="Sign up here" BackgroundColor="Transparent" FontAttributes="Bold" TextColor="Red" x:Name="CreateAccount" Command="{Binding SignUpHere}"/>
+                </StackLayout>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
